@@ -14,24 +14,35 @@ class Main extends Component {
               <form onSubmit={(event) => {
                 event.preventDefault()
                 const description = this.imageDescription.value
-                this.props.uploadImage(description)
+                const longtitude = this.longtitude.value
+                const latitude = this.latitude.value
+                const gender = this.gender.value
+                const stakeAmount = this.stakeAmount.value
+                const stakeTime = this.stakeTime.value
+                this.props.uploadImage({description,longtitude,latitude,gender,stakeAmount,stakeTime})
               }} >
                 <input type='file' accept=".jpg, .jpeg, .png, .bmp, .gif" onChange={this.props.captureFile} />
-                  <div className="form-group mr-sm-2">
-                    <br></br>
-                      <input
-                        id="imageDescription"
-                        type="text"
-                        ref={(input) => { this.imageDescription = input }}
-                        className="form-control"
-                        placeholder="Image description..."
-                        required />
-                  </div>
-                <button type="submit" class="btn btn-primary btn-block btn-lg">Upload!</button>
+                <div className="form-group mr-sm-2">
+                  <br></br>
+                  <input id="imageDescription" type="text" ref={(input) => { this.imageDescription = input }} className="form-control" placeholder="Image description..." required />
+                  <br />
+                  <input id="longtitude" type="text" ref={(input) => { this.longtitude = input }} className="form-control" placeholder="longtitude" required />
+                  <br />
+                  <input id="latitude" type="text" ref={(input) => { this.latitude = input }} className="form-control" placeholder="latitude" required />
+                  <br />
+                  <input id="gender" type="text" ref={(input) => { this.gender = input }} className="form-control" placeholder="gender" list="genderlist" required />
+                  <datalist id="genderlist"><option>Male</option><option>Female</option></datalist>
+                  <br />
+                  <input id="stakeAmount" type="text" ref={(input) => { this.stakeAmount = input }} className="form-control" placeholder="stake amount" required />
+                  <br />
+                  <input id="stakeTime" type="text" ref={(input) => { this.stakeTime = input }} className="form-control" placeholder="stake time" required />
+                </div>
+                <button type="submit" className="btn btn-primary btn-block btn-lg">Upload!</button>
               </form>
+
               <p>&nbsp;</p>
-              { this.props.images.map((image, key) => {
-                return(
+              {this.props.images.map((image, key) => {
+                return (
                   <div className="card mb-4" key={key} >
                     <div className="card-header">
                       <img
@@ -44,8 +55,7 @@ class Main extends Component {
                     </div>
                     <ul id="imageList" className="list-group list-group-flush">
                       <li className="list-group-item">
-                        <p class="text-center"><img src={`https://ipfs.infura.io/ipfs/${image.hash}`} style={{ maxWidth: '420px'}}/></p>
-                        <p>{image.description}</p>
+                        <p className="text-center"><a target='_blank' href={`ipfs://${image.hash}`}>{image.description}</a></p>
                       </li>
                       <li key={key} className="list-group-item py-2">
                         <small className="float-left mt-1 text-muted">
@@ -70,6 +80,7 @@ class Main extends Component {
             </div>
           </main>
         </div>
+
       </div>
     );
   }
