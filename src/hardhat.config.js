@@ -21,7 +21,7 @@ module.exports = {
   networks:{
     bsctestnet:{
       url:"https://data-seed-prebsc-2-s2.binance.org:8545",
-      accounts:['51c7ef5ba734e02951394185482789099524de5eea69111e381e60c7be11b1f8']
+      accounts:['']
     }
   },
   solidity: {
