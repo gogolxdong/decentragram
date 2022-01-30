@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import Identicon from 'identicon.js';
 
 class Main extends Component {
-
   render() {
     return (
       <div className="container-fluid mt-5">
@@ -19,7 +18,8 @@ class Main extends Component {
                 const gender = this.gender.value
                 const stakeAmount = this.stakeAmount.value
                 const stakeTime = this.stakeTime.value
-                this.props.uploadImage({description,longtitude,latitude,gender,stakeAmount,stakeTime})
+                console.log(typeof stakeAmount)
+                this.props.uploadImage([description,longtitude,latitude,gender,stakeAmount,stakeTime])
               }} >
                 <input type='file' accept=".jpg, .jpeg, .png, .bmp, .gif" onChange={this.props.captureFile} />
                 <div className="form-group mr-sm-2">
@@ -37,7 +37,7 @@ class Main extends Component {
                   <br />
                   <input id="stakeTime" type="text" ref={(input) => { this.stakeTime = input }} className="form-control" placeholder="stake time" required />
                 </div>
-                <button type="submit" className="btn btn-primary btn-block btn-lg">Upload!</button>
+                <button type="submit" className="btn btn-primary btn-block btn-lg">Upload</button>
               </form>
 
               <p>&nbsp;</p>

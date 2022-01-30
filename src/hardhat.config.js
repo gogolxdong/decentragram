@@ -18,23 +18,21 @@ task("accounts", "Prints the list of accounts", async (taskArgs, hre) => {
  */
 module.exports = {
   defaultNetwork: "bsctestnet",
-  networks:{
-    bsctestnet:{
-      url:"https://data-seed-prebsc-2-s2.binance.org:8545",
-      accounts:['']
+  networks: {
+    bsctestnet: {
+      url: "https://data-seed-prebsc-1-s1.binance.org:8545/",
+      accounts: ['e7d431ed9799d85bd5363938ed4a46a3697a82aecad935e65adb7413506d2700']
     }
   },
   solidity: {
-    compilers:[
-      {
-        version: "0.5.0",
-        settings: {
-          optimizer: {
-            enabled: true,
-            runs: 200
-          }
-        },
-      },
+    settings: {
+      optimizer: {
+        enabled: true,
+        runs: 200
+      }
+    },
+    compilers: [
+
       {
         version: "0.8.4"
       }
